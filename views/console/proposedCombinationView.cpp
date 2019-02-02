@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <iostream>
 #include "proposedCombinationView.hpp"
-#include "../../controllers/local/localColocateController.hpp"
+#include "../../controllers/colocateController.hpp"
 #include "../../models/proposedCombination.hpp"
 
 using namespace std;

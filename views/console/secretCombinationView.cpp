@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <iostream>
 #include "secretCombinationView.hpp"
-#include "../../controllers/local/localColocateController.hpp"
+#include "../../controllers/colocateController.hpp"
 
 using namespace std;
 

@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <iostream>
 #include "continueView.hpp"
-#include "../../controllers/local/localContinueController.hpp"
+#include "../../controllers/continueController.hpp"
 
 using namespace std;
 

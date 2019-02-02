@@ -7,16 +7,15 @@ using namespace std;
 LocalLogic::LocalLogic()
 {
 	game = new Game();
-	startController = new LocalStartController(game);
 	colocateController = new LocalColocateController(game);
-	continueController = new LocalContinueController(game);
+	noGameMenuController = new LocalNoGameMenuController(game);
 }
 
 Controller *LocalLogic::getController()
 {
 	if (game->getState() == INITIAL)
 	{
-		return startController;
+	    return noGameMenuController;
 	}
 	else if (game->getState() == IN_GAME)
 	{
@@ -24,7 +23,7 @@ Controller *LocalLogic::getController()
 	}
 	else if (game->getState() == FINAL)
 	{
-		return continueController;
+		return noGameMenuController;
 	}
 	else if (game->getState() == EXIT)
 	{

@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <iostream>
 #include "startView.hpp"
-#include "../../controllers/local/localStartController.hpp"
+#include "../../controllers/startController.hpp"
 
 using namespace std;
 

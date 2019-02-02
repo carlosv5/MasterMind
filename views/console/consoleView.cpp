@@ -9,6 +9,7 @@ ConsoleView::ConsoleView()
     startView = new StartView();
     gameView = new GameView();
     continueView = new ContinueView();
+    noGameMenuView = new NoGameMenuView();
 };
 
 void ConsoleView::interact(Controller* controller){
@@ -26,4 +27,8 @@ void ConsoleView::visit(ColocateController  * colocateController) {
 
 void ConsoleView::visit(ContinueController * continueController){
     continueView->interact(continueController);
+}    
+
+void ConsoleView::visit(NoGameMenuController * noGameMenuController){
+    noGameMenuView->interact(noGameMenuController);
 }    

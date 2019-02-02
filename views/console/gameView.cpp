@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <iostream>
 #include "gameView.hpp"
-#include "../../controllers/local/localColocateController.hpp"
+#include "../../controllers/colocateController.hpp"
 #include "secretCombinationView.hpp"
 #include "proposedCombinationView.hpp"
 
