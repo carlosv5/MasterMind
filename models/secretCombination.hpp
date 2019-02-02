@@ -2,6 +2,7 @@
 #define SECRET_COMBINATION
 
 #include "combination.hpp"
+#include "color.hpp"
 
 class SecretCombination : public Combination
 {

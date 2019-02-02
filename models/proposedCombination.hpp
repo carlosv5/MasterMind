@@ -3,16 +3,17 @@
 
 #include "combination.hpp"
 #include "secretCombination.hpp"
+#include "color.hpp"
 
 class ProposedCombination : public Combination
 {
 
   public:
+    ~ProposedCombination();
     void print();
     void calculateResult(SecretCombination);
     bool isWinner();
     char *read();
-    ProposedCombination();
     void createCombination();
     void showColorOptions();
 

@@ -1,25 +1,43 @@
 FLAGS = -g
 
-all: game
+all: game_mastermind
 
 clean: 
-	rm masterMind
+	rm ./masterMind
 
 clean_objects: 
 	rm *.o
 
-game: masterMind.o secretCombination.o proposedCombination.o color.o 
-	g++ masterMind.o secretCombination.o proposedCombination.o color.o -o masterMind $(FLAGS) 
+game_mastermind: masterMind.o secretCombination.o proposedCombination.o color.o controller.o  startController.o logic.o game.o colocateController.o continueController.o
+	g++ masterMind.o secretCombination.o proposedCombination.o color.o controller.o startController.o logic.o game.o colocateController.o continueController.o -o masterMind $(FLAGS) 
 	make clean_objects
 
-masterMind.o: masterMind.cpp headers/masterMind.hpp headers/secretCombination.hpp headers/proposedCombination.hpp
+masterMind.o: masterMind.cpp masterMind.hpp controllers/logic.hpp
 	g++ -c masterMind.cpp
 
-secretCombination.o: src/secretCombination.cpp headers/secretCombination.hpp
-	g++ -c src/secretCombination.cpp
+game.o: models/game.cpp models/game.hpp models/secretCombination.hpp models/proposedCombination.hpp models/state.hpp
+	g++ -c models/game.cpp
 
-proposedCombination.o: src/proposedCombination.cpp headers/proposedCombination.hpp
-	g++ -c src/proposedCombination.cpp	
+secretCombination.o: models/secretCombination.cpp models/secretCombination.hpp models/combination.hpp
+	g++ -c models/secretCombination.cpp
 
-color.o: src/color.cpp headers/color.hpp
-	g++ -c src/color.cpp
+proposedCombination.o: models/proposedCombination.cpp models/proposedCombination.hpp models/combination.hpp
+	g++ -c models/proposedCombination.cpp	
+
+color.o: models/color.cpp models/color.hpp
+	g++ -c models/color.cpp
+
+controller.o: controllers/controller.cpp controllers/controller.hpp models/game.hpp
+	g++ -c controllers/controller.cpp
+
+startController.o: controllers/startController.cpp controllers/startController.hpp models/game.hpp controllers/controller.hpp
+	g++ -c controllers/startController.cpp 
+
+colocateController.o: controllers/colocateController.cpp controllers/colocateController.hpp models/game.hpp controllers/controller.hpp
+	g++ -c controllers/colocateController.cpp 
+
+continueController.o: controllers/continueController.cpp controllers/continueController.hpp models/game.hpp controllers/controller.hpp
+	g++ -c controllers/continueController.cpp
+
+logic.o: controllers/logic.cpp controllers/logic.hpp controllers/startController.hpp controllers/controller.hpp
+	g++ -c controllers/logic.cpp
