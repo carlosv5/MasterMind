@@ -1,13 +1,15 @@
 #include <iostream>
 #include "string"
 #include "masterMind.hpp"
-#include "controllers/controller.hpp"
+#include "controllers/local/localLogic.hpp"
+#include "views/console/consoleView.hpp"
 
 using namespace std;
 
-MasterMind::MasterMind()
+MasterMind::MasterMind(View * view, Logic * logic)
 {
-	logic = new Logic();
+	this->view = view;
+	this->logic = logic;
 };
 
 void MasterMind::play()
@@ -18,12 +20,12 @@ void MasterMind::play()
 		controller = logic->getController();
 		if (controller != NULL)
 		{
-			controller->control();
+			view->interact(controller);
 		}
 	} while (controller != NULL);
 };
 
 int main()
 {
-	MasterMind().play();
+	MasterMind(new ConsoleView(), new LocalLogic()).play();
 }

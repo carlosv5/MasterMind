@@ -5,10 +5,8 @@
 
 #include "proposedCombination.hpp"
 
-ProposedCombination::~ProposedCombination()
+ProposedCombination::ProposedCombination()
 {
-    delete combination;
-    delete results;
 }
 
 void ProposedCombination::createCombination()
@@ -58,52 +56,13 @@ bool ProposedCombination::isWinner()
     }
     return false;
 }
-char *ProposedCombination::read()
-{
-    showColorOptions();
-    std::cout << "--Insert your colors (XXXX)--" << std::endl;
-    std::string combinationString;
-    getline(std::cin, combinationString);
 
-    for (int i = 0; i < SIZE_COMBINATION; i++)
-    {
-        char *colorArray = new char[Color::numberOfColors];
-        Color::values(colorArray);
-        bool isAColor = false;
-        for (int j = 0; j < Color::numberOfColors; j++)
-        {
-            if (combinationString[i] == colorArray[j])
-            {
-                isAColor = true;
-            }
-        }
-        assert(isAColor);
-        char colorToInsert = combinationString[i];
-        combination[i] = colorToInsert;
-    }
-    return combination;
+void ProposedCombination::clear()
+{
+    delete combination;
+    delete results;
 }
 
-void ProposedCombination::showColorOptions()
-{
-    std::cout << "You can use this colors:" << std::endl;
-    char *colorArray = new char[Color::numberOfColors];
-    Color::values(colorArray);
-    for (int i = 0; i < Color::numberOfColors; i++)
-    {
-        std::cout << colorArray[i] << " ";
-    }
-    std::cout << std::endl;
-    delete (colorArray);
-}
-
-void ProposedCombination::print()
-{
-    for (int i = 0; i < SIZE_COMBINATION; i++)
-    {
-        std::cout << "|" << combination[i] << "|"
-                  << " ";
-    }
-    std::cout << "Results:|" << results[INDEX_BLACK_RESULT] << " Blacks|" << results[INDEX_WHITE_RESULT] << "Whites|"
-              << " " << std::endl;
+int * ProposedCombination::getResults(){
+    return this->results;
 }

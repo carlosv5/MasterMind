@@ -8,9 +8,7 @@ class SecretCombination : public Combination
 {
 
   public:
-    void print();
     SecretCombination();
-    char *getCombination();
 };
 
 #endif

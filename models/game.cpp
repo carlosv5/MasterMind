@@ -6,43 +6,19 @@ using namespace std;
 
 Game::Game()
 {
+    secretCombination = new SecretCombination();
     proposedCombinations = new ProposedCombination[MAX_PROPOSED_COMBINATION];
     state = INITIAL;
     turn = 0;
 };
 
-Game::~Game(){
-    delete secretCombination;
-            std::cout << "deleting2" << std::endl;
-    for(int i = 0; i<getTurn();i++){
-                    std::cout << "deleting3" << std::endl;
-        proposedCombinations[i].~ProposedCombination();
-    }
-    delete proposedCombinations;
-    
-}
-
-void Game::print()
+SecretCombination * Game::getSecretCombination()
 {
-    std::cout << "Results:" << std::endl;
-    for (int i = 0; i < getTurn() + 1; i++)
-    {
-        proposedCombinations[i].print();
-    }
-}
-
-void Game::printSecretCombination()
-{
-    secretCombination->print();
+    return secretCombination;
 }
 
 void Game::createSecretCombination(){
     secretCombination = new SecretCombination();
-}
-
-void Game::winMessage()
-{
-    std::cout << "You win!! :D" << std::endl;
 }
 
 State Game::getState()
@@ -50,7 +26,7 @@ State Game::getState()
     return state;
 }
 
-bool Game::isWinner()
+bool Game::isThereWinner()
 {
     proposedCombinations[getTurn()].isWinner();
 }
@@ -59,13 +35,10 @@ void Game::setState(State state)
 {
     this->state = state;
 }
+
 void Game::createCombination()
 {
     proposedCombinations[getTurn()].createCombination();
-}
-void Game::read()
-{
-    proposedCombinations[getTurn()].read();
 }
 
 void Game::calculateResult()
@@ -87,8 +60,29 @@ void Game::setTurn(int turn)
 {
     this->turn = turn;
 }
+
 void Game::clear()
-{         
+{
     delete secretCombination;
-    setTurn(0);
+    this->setTurn(0);
+}
+
+int Game::getCombinationSize(){
+    secretCombination->getSize();
+}
+
+ProposedCombination Game::getProposedCombination(int turn){
+    return proposedCombinations[turn];
+}
+
+void Game::setProposedCombination(ProposedCombination proposedCombination, int turn){
+    proposedCombinations[turn] = proposedCombination;
+}
+
+ProposedCombination * Game::getProposedCombinationsArray(){
+    return proposedCombinations;
+}
+
+int Game::getMaxNumberOfCombinations(){
+    return MAX_PROPOSED_COMBINATION;
 }

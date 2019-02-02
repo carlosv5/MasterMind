@@ -1,18 +1,18 @@
 #include <iostream>
 #include "string"
-#include "logic.hpp"
+#include "localLogic.hpp"
 
 using namespace std;
 
-Logic::Logic()
+LocalLogic::LocalLogic()
 {
 	game = new Game();
-	startController = new StartController(game);
-	colocateController = new ColocateController(game);
-	continueController = new ContinueController(game);
+	startController = new LocalStartController(game);
+	colocateController = new LocalColocateController(game);
+	continueController = new LocalContinueController(game);
 }
 
-Controller *Logic::getController()
+Controller *LocalLogic::getController()
 {
 	if (game->getState() == INITIAL)
 	{

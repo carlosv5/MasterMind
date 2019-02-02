@@ -2,13 +2,13 @@
 #define CONTINUE_CONTROLLER
 
 #include "../models/game.hpp"
-#include "controller.hpp"
 
-class ContinueController : public Controller
+class ContinueController
 {
   public:
-    ContinueController(Game *game) : Controller(game){};
-    void control();
+    virtual void resume() = 0;
+    virtual void finish() = 0;
+
 };
 
 #endif

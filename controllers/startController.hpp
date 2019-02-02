@@ -2,15 +2,11 @@
 #define START_CONTROLLER
 
 #include "../models/game.hpp"
-#include "controller.hpp"
 
-class StartController : public Controller
+class StartController
 {
   public:
-    StartController(Game *game) : Controller(game)
-    {
-    };
-    void control();
+    virtual void setConfig() = 0;
 };
 
 #endif

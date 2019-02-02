@@ -3,16 +3,16 @@ FLAGS = -g
 all: game_mastermind
 
 clean: 
-	rm ./masterMind
+	rm *.o ./masterMind
 
 clean_objects: 
 	rm *.o
 
-game_mastermind: masterMind.o secretCombination.o proposedCombination.o color.o controller.o  startController.o logic.o game.o colocateController.o continueController.o
-	g++ masterMind.o secretCombination.o proposedCombination.o color.o controller.o startController.o logic.o game.o colocateController.o continueController.o -o masterMind $(FLAGS) 
+game_mastermind: masterMind.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o game.o localColocateController.o localContinueController.o consoleView.o startView.o gameView.o continueView.o secretCombinationView.o proposedCombinationView.o
+	g++ masterMind.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o game.o localColocateController.o localContinueController.o consoleView.o startView.o gameView.o continueView.o secretCombinationView.o proposedCombinationView.o -o masterMind $(FLAGS) 
 	make clean_objects
 
-masterMind.o: masterMind.cpp masterMind.hpp controllers/logic.hpp
+masterMind.o: masterMind.cpp masterMind.hpp controllers/local/localLogic.hpp views/console/consoleView.hpp
 	g++ -c masterMind.cpp
 
 game.o: models/game.cpp models/game.hpp models/secretCombination.hpp models/proposedCombination.hpp models/state.hpp
@@ -27,17 +27,32 @@ proposedCombination.o: models/proposedCombination.cpp models/proposedCombination
 color.o: models/color.cpp models/color.hpp
 	g++ -c models/color.cpp
 
-controller.o: controllers/controller.cpp controllers/controller.hpp models/game.hpp
-	g++ -c controllers/controller.cpp
+localStartController.o: controllers/local/localStartController.cpp controllers/local/localStartController.hpp models/game.hpp controllers/controller.hpp
+	g++ -c controllers/local/localStartController.cpp 
 
-startController.o: controllers/startController.cpp controllers/startController.hpp models/game.hpp controllers/controller.hpp
-	g++ -c controllers/startController.cpp 
+localColocateController.o: controllers/local/localColocateController.cpp controllers/local/localColocateController.hpp models/game.hpp controllers/controller.hpp
+	g++ -c controllers/local/localColocateController.cpp 
 
-colocateController.o: controllers/colocateController.cpp controllers/colocateController.hpp models/game.hpp controllers/controller.hpp
-	g++ -c controllers/colocateController.cpp 
+localContinueController.o: controllers/local/localContinueController.cpp controllers/local/localContinueController.hpp models/game.hpp controllers/controller.hpp
+	g++ -c controllers/local/localContinueController.cpp
 
-continueController.o: controllers/continueController.cpp controllers/continueController.hpp models/game.hpp controllers/controller.hpp
-	g++ -c controllers/continueController.cpp
+localLogic.o: controllers/local/localLogic.cpp controllers/local/localLogic.hpp controllers/local/localStartController.hpp controllers/controller.hpp logic.hpp
+	g++ -c controllers/local/localLogic.cpp
 
-logic.o: controllers/logic.cpp controllers/logic.hpp controllers/startController.hpp controllers/controller.hpp
-	g++ -c controllers/logic.cpp
+consoleView.o: views/console/consoleView.cpp views/console/consoleView.hpp controllers/controller.hpp view.hpp
+	g++ -c views/console/consoleView.cpp
+
+startView.o: views/console/startView.cpp views/console/startView.hpp controllers/controllerVisitor.hpp
+	g++ -c views/console/startView.cpp
+
+gameView.o: views/console/gameView.cpp views/console/gameView.hpp controllers/controllerVisitor.hpp views/console/secretCombinationView.hpp
+	g++ -c views/console/gameView.cpp
+
+continueView.o: views/console/continueView.cpp views/console/continueView.hpp controllers/controllerVisitor.hpp
+	g++ -c views/console/continueView.cpp
+
+secretCombinationView.o: views/console/secretCombinationView.cpp views/console/secretCombinationView.hpp
+	g++ -c views/console/secretCombinationView.cpp
+
+proposedCombinationView.o: views/console/proposedCombinationView.cpp views/console/proposedCombinationView.hpp
+	g++ -c views/console/proposedCombinationView.cpp

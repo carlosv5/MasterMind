@@ -17,17 +17,3 @@ SecretCombination::SecretCombination()
     delete arrayColors;
 }
 
-void SecretCombination::print()
-{
-    std::cout << "The secret combination was: ";
-    for (int i = 0; i < SIZE_COMBINATION; i++)
-    {
-        std::cout << combination[i] << " ";
-    }
-    std::cout << std::endl;
-}
-
-char *SecretCombination::getCombination()
-{
-    return combination;
-}

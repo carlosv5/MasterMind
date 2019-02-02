@@ -1,16 +1,20 @@
 #ifndef MASTERMIND
 #define MASTERMIND
-#include <memory>
-#include "controllers/logic.hpp"
+#include "controllers/controller.hpp"
+#include "logic.hpp"
+#include "view.hpp"
+
+
 
 class MasterMind
 {
   public:
-    MasterMind();
+    MasterMind(View * view, Logic * logic);
     void play();
 
   private:
     Logic *logic;
+    View *view;
 };
 
 #endif

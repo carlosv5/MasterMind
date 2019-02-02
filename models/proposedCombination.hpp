@@ -9,13 +9,12 @@ class ProposedCombination : public Combination
 {
 
   public:
-    ~ProposedCombination();
-    void print();
+    ProposedCombination();
     void calculateResult(SecretCombination);
     bool isWinner();
-    char *read();
     void createCombination();
-    void showColorOptions();
+    void clear();
+    int * getResults();
 
   private:
     int *results;
