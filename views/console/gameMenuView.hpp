@@ -6,6 +6,8 @@
 #include "../../controllers/gameMenuController.hpp"
 #include "commands/commandColocate.hpp"
 #include "commands/commandSurrender.hpp"
+#include "commands/commandUndo.hpp"
+#include "commands/commandRedo.hpp"
 
 class GameMenuView 
 {
@@ -15,6 +17,8 @@ class GameMenuView
 
   private:
     std::vector<Command *> commandsVector;
+    Game* game;
+    MementoRegistry* mementoRegistry;
 };
 
 #endif

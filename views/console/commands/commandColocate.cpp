@@ -9,7 +9,8 @@ bool CommandColocate::isActive(State state){
 }
 
 void CommandColocate::execute(GameMenuController * controller){
-    //controller->resume();
+    MementoRegistry *mementoRegistry = controller->getMementoRegistry();
+    mementoRegistry->execute();
     ColocateController * colocateController = controller->getColocateController();
 	colocateController->createCombination();
 

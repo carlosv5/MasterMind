@@ -8,8 +8,8 @@ clean:
 clean_objects: 
 	rm *.o
 
-game_mastermind: masterMind.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o game.o localColocateController.o localContinueController.o consoleView.o secretCombinationView.o proposedCombinationView.o localNoGameMenuController.o noGameMenuView.o command.o commandStart.o commandContinue.o commandEnd.o localGameMenuController.o commandColocate.o gameMenuView.o commandSurrender.o
-	g++ masterMind.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o game.o localColocateController.o localContinueController.o consoleView.o  secretCombinationView.o proposedCombinationView.o localNoGameMenuController.o noGameMenuView.o command.o commandStart.o commandContinue.o commandEnd.o localGameMenuController.o commandColocate.o gameMenuView.o commandSurrender.o -o masterMind $(FLAGS) 
+game_mastermind: masterMind.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o game.o localColocateController.o localContinueController.o consoleView.o secretCombinationView.o proposedCombinationView.o localNoGameMenuController.o noGameMenuView.o command.o commandStart.o commandContinue.o commandEnd.o localGameMenuController.o commandColocate.o gameMenuView.o commandSurrender.o gameMemento.o mementoRegistry.o commandUndo.o commandRedo.o
+	g++ masterMind.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o game.o localColocateController.o localContinueController.o consoleView.o  secretCombinationView.o proposedCombinationView.o localNoGameMenuController.o noGameMenuView.o command.o commandStart.o commandContinue.o commandEnd.o localGameMenuController.o commandColocate.o gameMenuView.o commandSurrender.o gameMemento.o mementoRegistry.o commandUndo.o commandRedo.o -o masterMind $(FLAGS) 
 	make clean_objects
 
 masterMind.o: masterMind.cpp masterMind.hpp controllers/local/localLogic.hpp views/console/consoleView.hpp
@@ -77,3 +77,15 @@ commandColocate.o: views/console/commands/commandColocate.hpp views/console/comm
 
 commandSurrender.o: views/console/commands/commandSurrender.hpp views/console/commands/commandSurrender.cpp views/console/commands/command.hpp
 	g++ -c views/console/commands/commandSurrender.cpp
+
+gameMemento.o: models/gameMemento.cpp models/gameMemento.hpp models/game.hpp models/mementoInterface.hpp
+	g++ -c models/gameMemento.cpp
+
+mementoRegistry.o: models/mementoRegistry.cpp models/mementoRegistry.hpp
+	g++ -c models/mementoRegistry.cpp
+
+commandUndo.o: views/console/commands/commandUndo.hpp views/console/commands/commandUndo.cpp views/console/commands/command.hpp
+	g++ -c views/console/commands/commandUndo.cpp
+
+commandRedo.o: views/console/commands/commandRedo.hpp views/console/commands/commandRedo.cpp views/console/commands/command.hpp
+	g++ -c views/console/commands/commandRedo.cpp

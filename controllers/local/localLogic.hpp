@@ -4,6 +4,7 @@
 #include "localGameMenuController.hpp"
 #include "localNoGameMenuController.hpp"
 #include "../../logic.hpp"
+#include "../../models/mementoRegistry.hpp"
 
 class LocalLogic : public Logic
 {
@@ -13,6 +14,7 @@ class LocalLogic : public Logic
 
   private:
     Game *game;
+    MementoRegistry * mementoRegistry;
     LocalNoGameMenuController * noGameMenuController;
     LocalGameMenuController * gameMenuController;
 };

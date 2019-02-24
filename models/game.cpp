@@ -1,6 +1,7 @@
 #include <iostream>
 #include "string"
 #include "game.hpp"
+#include "gameMemento.hpp"
 
 using namespace std;
 
@@ -85,4 +86,20 @@ ProposedCombination * Game::getProposedCombinationsArray(){
 
 int Game::getMaxNumberOfCombinations(){
     return MAX_PROPOSED_COMBINATION;
+}
+
+void Game::setProposedCombinations(ProposedCombination *proposedCombinations){
+    this->proposedCombinations = proposedCombinations;
+}
+
+void Game::setSecretCombination(SecretCombination *secretCombination){
+    this->secretCombination = secretCombination;
+}
+
+GameMemento* Game::createGameMemento(){
+    return new GameMemento(this, secretCombination, proposedCombinations, state, turn);
+}
+
+void Game::restore(GameMemento *gameMemento){
+    gameMemento->restore();
 }

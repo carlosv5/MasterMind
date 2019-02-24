@@ -11,7 +11,7 @@ class ProposedCombinationView
     ProposedCombination readProposedCombination(ProposedCombination proposedCombination, int SIZE_COMBINATION);
     void showColorOptions();
     void printResults(ProposedCombination * proposedCombinations, int turn);
-
+    void printPreviewCombinations(ProposedCombination * proposedCombinations, int turn);
 
   private:
     static const int INDEX_BLACK_RESULT = 0;

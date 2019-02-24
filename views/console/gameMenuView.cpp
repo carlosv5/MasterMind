@@ -6,6 +6,8 @@ using namespace std;
 
 GameMenuView::GameMenuView(){
 	commandsVector.push_back(new CommandColocate());
+	commandsVector.push_back(new CommandUndo());
+	commandsVector.push_back(new CommandRedo());
 	commandsVector.push_back(new CommandSurrender());
 };
 
@@ -15,7 +17,7 @@ void GameMenuView::interact(GameMenuController * gameMenuController){
 	State state = gameMenuController->getState();
 	std::vector<Command * > activeCommands;
 	for(int i=0; i<commandsVector.size(); i++){
-        if(commandsVector.at(i)->isActive(state)){
+        if(commandsVector.at(i)->isActive(state) && commandsVector.at(i)->isDoable(gameMenuController->getMementoRegistry())){
             activeCommands.push_back(commandsVector.at(i));
         }
     }

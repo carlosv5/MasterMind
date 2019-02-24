@@ -3,6 +3,8 @@
 #include "proposedCombination.hpp"
 #include "state.hpp"
 
+class GameMemento;
+
 class Game
 {
   public:
@@ -23,6 +25,10 @@ class Game
     int getTurn();
     void setTurn(int turn);
     void clear();
+    void setProposedCombinations(ProposedCombination *proposedCombinations);
+    void setSecretCombination(SecretCombination *secretCombination);
+    GameMemento* createGameMemento();
+    void restore(GameMemento *gameMemento);
 
   private:
     SecretCombination *secretCombination;

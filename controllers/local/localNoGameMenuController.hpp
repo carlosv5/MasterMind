@@ -10,20 +10,25 @@
 class LocalNoGameMenuController : public NoGameMenuController, public Controller
 {
   public:
-    LocalNoGameMenuController(Game *game) : Controller(game)
+    LocalNoGameMenuController(Game *game, MementoRegistry * mementoRegistry) : Controller(game)
     {
       startController = new LocalStartController(game);
       continueController = new LocalContinueController(game);
+      this->mementoRegistry =  mementoRegistry;
     };
     void accept(ControllerVisitor * controllerVisitor);
     void start();
     void resume();
     void finish();
     State getState();
+    void executeMementoRegistry();
+    void flushMementoRegistry();
+    MementoRegistry * getMementoRegistry();
 
   private:
     LocalStartController * startController;
     LocalContinueController * continueController;
+    MementoRegistry * mementoRegistry;
 
 };
 

@@ -7,8 +7,9 @@ using namespace std;
 LocalLogic::LocalLogic()
 {
 	game = new Game();
-	noGameMenuController = new LocalNoGameMenuController(game);
-	gameMenuController = new LocalGameMenuController(game);
+	mementoRegistry = new MementoRegistry(game);
+	noGameMenuController = new LocalNoGameMenuController(game, mementoRegistry);
+	gameMenuController = new LocalGameMenuController(game, mementoRegistry);
 }
 
 Controller *LocalLogic::getController()

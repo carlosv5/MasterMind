@@ -20,7 +20,7 @@ void NoGameMenuView::interact(NoGameMenuController *noGameMenuController)
 	std::vector<Command *> activeCommands;
 	for (int i = 0; i < commandsVector.size(); i++)
 	{
-		if (commandsVector.at(i)->isActive(state))
+		if (commandsVector.at(i)->isActive(state) && commandsVector.at(i)->isDoable(noGameMenuController->getMementoRegistry()))
 		{
 			activeCommands.push_back(commandsVector.at(i));
 		}
@@ -34,4 +34,4 @@ void NoGameMenuView::interact(NoGameMenuController *noGameMenuController)
 	cin >> optionChoosen;
 	cin.ignore();
 	activeCommands.at(optionChoosen)->execute(noGameMenuController);
-};
+}

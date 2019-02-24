@@ -25,3 +25,15 @@ State LocalNoGameMenuController::getState(){
          return game->getState();
  }
 
+ void LocalNoGameMenuController::executeMementoRegistry(){
+    mementoRegistry->execute();
+}
+
+void LocalNoGameMenuController::flushMementoRegistry(){
+    mementoRegistry->flush();
+}
+
+MementoRegistry * LocalNoGameMenuController::getMementoRegistry(){
+     return mementoRegistry;
+}
+

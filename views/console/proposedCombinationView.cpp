@@ -63,3 +63,17 @@ void ProposedCombinationView::printResults(ProposedCombination * proposedCombina
                 << " " << std::endl;
     }
 }
+
+void ProposedCombinationView::printPreviewCombinations(ProposedCombination * proposedCombinations, int turn)
+{
+    std::cout << "The board is:" << std::endl;
+    for (int i = 0; i < turn; i++){
+        for (int j = 0; j < proposedCombinations[0].getSize(); j++)
+        {
+            std::cout << "|" << proposedCombinations[i].getCombination()[j] << "|"
+                    << " ";
+        }
+        std::cout << "Results:|" << proposedCombinations[i].getResults()[INDEX_BLACK_RESULT] << " Blacks|" << proposedCombinations[i].getResults()[INDEX_WHITE_RESULT] << "Whites|"
+                << " " << std::endl;
+    }
+}

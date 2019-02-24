@@ -21,3 +21,29 @@ void LocalGameMenuController::surrender(){
     continueController->resume();
 }
 
+ MementoRegistry * LocalGameMenuController::getMementoRegistry(){
+     return mementoRegistry;
+}
+
+bool LocalGameMenuController::undoable(){
+    return mementoRegistry->undoable();
+}
+
+bool LocalGameMenuController::redoable(){
+    return mementoRegistry->redoable();
+}
+
+void LocalGameMenuController::executeMementoRegistry(){
+    mementoRegistry->execute();
+}
+
+void LocalGameMenuController::redo(){
+    mementoRegistry->redo(game);
+}
+
+void LocalGameMenuController::undo(){
+    mementoRegistry->undo(game);
+}
+
+ 
+

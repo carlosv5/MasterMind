@@ -10,5 +10,6 @@ bool CommandSurrender::isActive(State state){
 
 void CommandSurrender::execute(GameMenuController * controller){
     std::cout << "Better luck next time! :D" << std::endl;
+    controller->getMementoRegistry()->execute();
     controller->surrender();
 }
