@@ -12,7 +12,3 @@ void LocalStartController::setConfig()
     game->createSecretCombination();
     game->setState(IN_GAME);
 }
-
-void LocalStartController::accept(ControllerVisitor * controllerVisitor){
-    controllerVisitor->visit(this);
-}

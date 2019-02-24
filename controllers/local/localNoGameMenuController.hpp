@@ -5,8 +5,8 @@
 #include "../controller.hpp"
 #include "localStartController.hpp"
 #include "localContinueController.hpp"
-#include <vector>
 #include "../noGameMenuController.hpp"
+#include <vector>
 
 class LocalNoGameMenuController : public NoGameMenuController, public Controller
 {

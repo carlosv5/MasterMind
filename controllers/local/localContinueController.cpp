@@ -16,7 +16,3 @@ void LocalContinueController::finish()
 {
 	game->setState(EXIT);
 }
-
-void LocalContinueController::accept(ControllerVisitor * controllerVisitor){
-    controllerVisitor->visit(this);
-}

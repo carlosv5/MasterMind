@@ -12,7 +12,6 @@ class LocalStartController : public StartController, public Controller
     LocalStartController(Game *game) : Controller(game){
       this->game = game;
     }
-    void accept(ControllerVisitor * controllerVisitor);
     void setConfig();
 };
 

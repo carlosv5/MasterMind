@@ -5,10 +5,6 @@
 
 using namespace std;
 
-void LocalColocateController::accept(ControllerVisitor * controllerVisitor){
-    controllerVisitor->visit(this);
-}
-
 void LocalColocateController::createCombination(){
         assert(game->getState() == IN_GAME);
         game->createCombination();

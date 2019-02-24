@@ -8,8 +8,8 @@ clean:
 clean_objects: 
 	rm *.o
 
-game_mastermind: masterMind.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o game.o localColocateController.o localContinueController.o consoleView.o startView.o gameView.o continueView.o secretCombinationView.o proposedCombinationView.o localNoGameMenuController.o noGameMenuView.o command.o commandStart.o commandContinue.o commandEnd.o
-	g++ masterMind.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o game.o localColocateController.o localContinueController.o consoleView.o startView.o gameView.o continueView.o secretCombinationView.o proposedCombinationView.o localNoGameMenuController.o noGameMenuView.o command.o commandStart.o commandContinue.o commandEnd.o -o masterMind $(FLAGS) 
+game_mastermind: masterMind.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o game.o localColocateController.o localContinueController.o consoleView.o secretCombinationView.o proposedCombinationView.o localNoGameMenuController.o noGameMenuView.o command.o commandStart.o commandContinue.o commandEnd.o localGameMenuController.o commandColocate.o gameMenuView.o
+	g++ masterMind.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o game.o localColocateController.o localContinueController.o consoleView.o  secretCombinationView.o proposedCombinationView.o localNoGameMenuController.o noGameMenuView.o command.o commandStart.o commandContinue.o commandEnd.o localGameMenuController.o commandColocate.o gameMenuView.o -o masterMind $(FLAGS) 
 	make clean_objects
 
 masterMind.o: masterMind.cpp masterMind.hpp controllers/local/localLogic.hpp views/console/consoleView.hpp
@@ -40,19 +40,13 @@ localLogic.o: controllers/local/localLogic.cpp controllers/local/localLogic.hpp 
 	g++ -c controllers/local/localLogic.cpp
 
 localNoGameMenuController.o: controllers/local/localNoGameMenuController.cpp controllers/local/localNoGameMenuController.hpp models/game.hpp controllers/controller.hpp
-	g++ -c controllers/local/localNoGameMenuController.cpp 
+	g++ -c controllers/local/localNoGameMenuController.cpp
+
+localGameMenuController.o: controllers/local/localGameMenuController.cpp controllers/local/localGameMenuController.hpp models/game.hpp controllers/controller.hpp
+	g++ -c controllers/local/localGameMenuController.cpp 
 
 consoleView.o: views/console/consoleView.cpp views/console/consoleView.hpp controllers/controller.hpp view.hpp
 	g++ -c views/console/consoleView.cpp
-
-startView.o: views/console/startView.cpp views/console/startView.hpp controllers/controllerVisitor.hpp
-	g++ -c views/console/startView.cpp
-
-gameView.o: views/console/gameView.cpp views/console/gameView.hpp controllers/controllerVisitor.hpp views/console/secretCombinationView.hpp
-	g++ -c views/console/gameView.cpp
-
-continueView.o: views/console/continueView.cpp views/console/continueView.hpp controllers/controllerVisitor.hpp
-	g++ -c views/console/continueView.cpp
 
 secretCombinationView.o: views/console/secretCombinationView.cpp views/console/secretCombinationView.hpp
 	g++ -c views/console/secretCombinationView.cpp
@@ -62,6 +56,9 @@ proposedCombinationView.o: views/console/proposedCombinationView.cpp views/conso
 
 noGameMenuView.o: views/console/noGameMenuView.cpp views/console/noGameMenuView.hpp controllers/controllerVisitor.hpp
 	g++ -c views/console/noGameMenuView.cpp
+
+gameMenuView.o: views/console/gameMenuView.cpp views/console/gameMenuView.hpp controllers/controllerVisitor.hpp
+	g++ -c views/console/gameMenuView.cpp
 
 command.o: views/console/commands/command.hpp views/console/commands/command.cpp 
 	g++ -c views/console/commands/command.cpp
@@ -74,3 +71,6 @@ commandContinue.o: views/console/commands/commandContinue.hpp views/console/comm
 
 commandEnd.o: views/console/commands/commandEnd.hpp views/console/commands/commandEnd.cpp views/console/commands/command.hpp
 	g++ -c views/console/commands/commandEnd.cpp
+
+commandColocate.o: views/console/commands/commandColocate.hpp views/console/commands/commandColocate.cpp views/console/commands/command.hpp
+	g++ -c views/console/commands/commandColocate.cpp

@@ -11,7 +11,6 @@ class LocalColocateController : public ColocateController, public Controller
     LocalColocateController(Game *game) : Controller(game)
     {
     };
-    void accept(ControllerVisitor * controllerVisitor);
     SecretCombination * getSecretCombination();
     int getCombinationSize();
     void createCombination();

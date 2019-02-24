@@ -1,7 +1,7 @@
 #ifndef LOCAL_LOGIC
 #define LOCAL_LOGIC
 
-#include "localColocateController.hpp"
+#include "localGameMenuController.hpp"
 #include "localNoGameMenuController.hpp"
 #include "../../logic.hpp"
 
@@ -13,8 +13,8 @@ class LocalLogic : public Logic
 
   private:
     Game *game;
-    LocalColocateController *colocateController;
     LocalNoGameMenuController * noGameMenuController;
+    LocalGameMenuController * gameMenuController;
 };
 
 #endif

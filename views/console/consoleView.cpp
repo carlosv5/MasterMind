@@ -6,29 +6,19 @@ using namespace std;
 
 ConsoleView::ConsoleView()
 {
-    startView = new StartView();
-    gameView = new GameView();
-    continueView = new ContinueView();
     noGameMenuView = new NoGameMenuView();
+    gameMenuView = new GameMenuView();
 };
 
 void ConsoleView::interact(Controller* controller){
     assert(controller != NULL);
     controller->accept(this);
-};
-
-void ConsoleView::visit(StartController * startController) {
-    startView->interact(startController);
-};
-
-void ConsoleView::visit(ColocateController  * colocateController) {
-    gameView->interact(colocateController);
-};
-
-void ConsoleView::visit(ContinueController * continueController){
-    continueView->interact(continueController);
-}    
+}
 
 void ConsoleView::visit(NoGameMenuController * noGameMenuController){
     noGameMenuView->interact(noGameMenuController);
 }    
+
+void ConsoleView::visit(GameMenuController * gameMenuController){
+    gameMenuView->interact(gameMenuController);
+} 

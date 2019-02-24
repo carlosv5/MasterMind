@@ -9,5 +9,6 @@ bool CommandEnd::isActive(State state){
 }
 
 void CommandEnd::execute(NoGameMenuController * controller){
+    std::cout << "See you soon! :D" << std::endl;
     controller->finish();
 }

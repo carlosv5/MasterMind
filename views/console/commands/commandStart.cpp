@@ -9,5 +9,6 @@ bool CommandStart::isActive(State state){
 }
 
 void CommandStart::execute(NoGameMenuController * controller){
+    std::cout << "\033[1;31mM A S T E R  M I N D \033[0m" << std::endl;
     controller->start();
 }

@@ -9,7 +9,6 @@ class LocalContinueController : public ContinueController, public Controller
 {
   public:
     LocalContinueController(Game *game) : Controller(game){};
-    void accept(ControllerVisitor * controllerVisitor);
     void resume();
     void finish();
 

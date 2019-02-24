@@ -1,15 +1,16 @@
-#include <assert.h>
+#include "commandColocate.hpp"
 #include <iostream>
-#include "gameView.hpp"
-#include "../../controllers/colocateController.hpp"
-#include "secretCombinationView.hpp"
-#include "proposedCombinationView.hpp"
 
-using namespace std;
+bool CommandColocate::isActive(State state){
+    if(state==IN_GAME){
+        return true;
+    }
+    return false;
+}
 
-GameView::GameView(){};
-
-void GameView::interact(ColocateController * colocateController){
+void CommandColocate::execute(GameMenuController * controller){
+    //controller->resume();
+    ColocateController * colocateController = controller->getColocateController();
 	colocateController->createCombination();
 
 	ProposedCombinationView * proposedCombinationView = new ProposedCombinationView;
@@ -30,9 +31,9 @@ void GameView::interact(ColocateController * colocateController){
 	}
 
 	colocateController->incrementTurn();
-};
+}
 
-void GameView::printSecretCombination(ColocateController * colocateController){
+void CommandColocate::printSecretCombination(ColocateController * colocateController){
 	SecretCombination * secretCombination = colocateController->getSecretCombination();
 	SecretCombinationView * secretCombinationView = new SecretCombinationView;
 	secretCombinationView->printSecretCombination(secretCombination->getCombination(), colocateController->getCombinationSize());

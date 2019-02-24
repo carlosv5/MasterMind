@@ -7,8 +7,8 @@ using namespace std;
 LocalLogic::LocalLogic()
 {
 	game = new Game();
-	colocateController = new LocalColocateController(game);
 	noGameMenuController = new LocalNoGameMenuController(game);
+	gameMenuController = new LocalGameMenuController(game);
 }
 
 Controller *LocalLogic::getController()
@@ -19,7 +19,7 @@ Controller *LocalLogic::getController()
 	}
 	else if (game->getState() == IN_GAME)
 	{
-		return colocateController;
+		return gameMenuController;
 	}
 	else if (game->getState() == FINAL)
 	{
