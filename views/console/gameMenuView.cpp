@@ -6,6 +6,7 @@ using namespace std;
 
 GameMenuView::GameMenuView(){
 	commandsVector.push_back(new CommandColocate());
+	commandsVector.push_back(new CommandSurrender());
 };
 
 void GameMenuView::interact(GameMenuController * gameMenuController){

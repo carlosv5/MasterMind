@@ -37,5 +37,4 @@ void CommandColocate::printSecretCombination(ColocateController * colocateContro
 	SecretCombination * secretCombination = colocateController->getSecretCombination();
 	SecretCombinationView * secretCombinationView = new SecretCombinationView;
 	secretCombinationView->printSecretCombination(secretCombination->getCombination(), colocateController->getCombinationSize());
-
 }

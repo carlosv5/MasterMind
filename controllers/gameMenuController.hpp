@@ -9,6 +9,7 @@ class GameMenuController
   public:
     virtual State getState() = 0;
     virtual ColocateController * getColocateController() {};
+    virtual void surrender() = 0;
 
 };
 

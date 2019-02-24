@@ -6,7 +6,6 @@
 #include "localStartController.hpp"
 #include "localContinueController.hpp"
 #include "../noGameMenuController.hpp"
-#include <vector>
 
 class LocalNoGameMenuController : public NoGameMenuController, public Controller
 {
@@ -15,8 +14,6 @@ class LocalNoGameMenuController : public NoGameMenuController, public Controller
     {
       startController = new LocalStartController(game);
       continueController = new LocalContinueController(game);
-      compositeControllersVector.push_back(startController);
-      compositeControllersVector.push_back(continueController);
     };
     void accept(ControllerVisitor * controllerVisitor);
     void start();
@@ -27,7 +24,6 @@ class LocalNoGameMenuController : public NoGameMenuController, public Controller
   private:
     LocalStartController * startController;
     LocalContinueController * continueController;
-    std::vector<Controller *> compositeControllersVector;
 
 };
 

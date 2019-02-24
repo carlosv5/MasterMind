@@ -5,6 +5,7 @@
 #include "../../controllers/controllerVisitor.hpp"
 #include "../../controllers/gameMenuController.hpp"
 #include "commands/commandColocate.hpp"
+#include "commands/commandSurrender.hpp"
 
 class GameMenuView 
 {

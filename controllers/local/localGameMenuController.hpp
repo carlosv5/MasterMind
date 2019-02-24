@@ -5,7 +5,7 @@
 #include "../controller.hpp"
 #include "../gameMenuController.hpp"
 #include "localColocateController.hpp"
-#include <vector>
+#include "localContinueController.hpp"
 
 class LocalGameMenuController : public GameMenuController, public Controller
 {
@@ -13,15 +13,16 @@ class LocalGameMenuController : public GameMenuController, public Controller
     LocalGameMenuController(Game *game) : Controller(game)
     {
       colocateController = new LocalColocateController(game);
-      compositeControllersVector.push_back(colocateController);
+      continueController = new LocalContinueController(game);
     };
     void accept(ControllerVisitor * controllerVisitor);
     State getState();
+    void surrender();
     ColocateController * getColocateController();
 
   private:
     LocalColocateController * colocateController;
-    std::vector<Controller *> compositeControllersVector;
+    LocalContinueController * continueController;
 
 };
 

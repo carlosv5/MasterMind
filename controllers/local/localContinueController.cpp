@@ -7,7 +7,7 @@ using namespace std;
 
 void LocalContinueController::resume()
 {
-	assert(game->getState() == FINAL);
+	assert(game->getState() == FINAL || game->getState() == IN_GAME);
 	game->clear();
 	game->setState(INITIAL);
 }

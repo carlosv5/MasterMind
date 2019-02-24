@@ -17,3 +17,7 @@ ColocateController * LocalGameMenuController::getColocateController(){
     return colocateController;
 }
 
+void LocalGameMenuController::surrender(){
+    continueController->resume();
+}
+
