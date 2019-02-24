@@ -7,3 +7,7 @@ bool CommandContinue::isActive(State state){
     }
     return false;
 }
+
+void CommandContinue::execute(NoGameMenuController * controller){
+    controller->resume();
+}

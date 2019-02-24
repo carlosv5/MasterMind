@@ -8,7 +8,7 @@ using namespace std;
 
 NoGameMenuView::NoGameMenuView(){
 	commandsVector.push_back(new CommandStart());
-	commandsVector.push_back( new CommandContinue());
+	commandsVector.push_back(new CommandContinue());
 	commandsVector.push_back(new CommandEnd());
 };
 
@@ -17,7 +17,6 @@ void NoGameMenuView::interact(NoGameMenuController * noGameMenuController){
     std::cout << "Select one option: " << std::endl;
 	State state = noGameMenuController->getState();
 	std::vector<Command * > activeCommands;
-			std::cout << commandsVector.size() << std::endl;
 	for(int i=0; i<commandsVector.size(); i++){
         if(commandsVector.at(i)->isActive(state)){
             activeCommands.push_back(commandsVector.at(i));
@@ -30,6 +29,6 @@ void NoGameMenuView::interact(NoGameMenuController * noGameMenuController){
 	std::cout << ">>";
 	cin >> optionChoosen;
 	cin.ignore();
-	noGameMenuController->execute(activeCommands.at(optionChoosen)->getTitle());
+	activeCommands.at(optionChoosen)->execute(noGameMenuController);
 };
 

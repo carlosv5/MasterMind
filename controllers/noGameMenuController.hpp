@@ -6,7 +6,6 @@
 class NoGameMenuController
 {
   public:
-    virtual void execute(std::string title) = 0;
     virtual void start() = 0;
     virtual void resume() = 0;
     virtual void finish() = 0;

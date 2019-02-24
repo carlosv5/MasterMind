@@ -10,7 +10,7 @@ class CommandStart: public Command
   public:
     CommandStart() : Command("Start game"){};
     bool isActive(State state);
-    
+    void execute(NoGameMenuController * controller);
 };
 
 #endif

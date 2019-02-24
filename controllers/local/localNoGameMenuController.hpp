@@ -23,7 +23,6 @@ class LocalNoGameMenuController : public NoGameMenuController, public Controller
     void resume();
     void finish();
     State getState();
-    void execute(std::string title);
 
   private:
     LocalStartController * startController;

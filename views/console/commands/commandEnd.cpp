@@ -7,3 +7,7 @@ bool CommandEnd::isActive(State state){
     }
     return false;
 }
+
+void CommandEnd::execute(NoGameMenuController * controller){
+    controller->finish();
+}

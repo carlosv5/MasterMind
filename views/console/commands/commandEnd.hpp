@@ -10,7 +10,7 @@ class CommandEnd: public Command
   public:
     CommandEnd() : Command("End game"){};
     bool isActive(State state);
-    
+    void execute(NoGameMenuController * controller);
 };
 
 #endif

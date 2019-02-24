@@ -7,3 +7,7 @@ bool CommandStart::isActive(State state){
     }
     return false;
 }
+
+void CommandStart::execute(NoGameMenuController * controller){
+    controller->start();
+}

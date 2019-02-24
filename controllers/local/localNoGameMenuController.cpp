@@ -25,13 +25,3 @@ State LocalNoGameMenuController::getState(){
          return game->getState();
  }
 
- void LocalNoGameMenuController::execute(std::string title){
-    if(title == "Start game"){
-        start();
-    } else if (title == "Continue game") {
-        resume();
-    } else {
-        finish();
-    }
-}
-
