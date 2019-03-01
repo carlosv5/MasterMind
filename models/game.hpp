@@ -2,6 +2,8 @@
 #define GAME
 #include "proposedCombination.hpp"
 #include "state.hpp"
+#include <iostream>
+#include "string"
 
 class GameMemento;
 
@@ -29,6 +31,8 @@ class Game
     void setSecretCombination(SecretCombination *secretCombination);
     GameMemento* createGameMemento();
     void restore(GameMemento *gameMemento);
+    std::string toString();
+    Game* toGame(std::string);
 
   private:
     SecretCombination *secretCombination;

@@ -1,7 +1,6 @@
-#include <iostream>
-#include "string"
 #include "game.hpp"
 #include "gameMemento.hpp"
+#include <sstream>
 
 using namespace std;
 
@@ -97,9 +96,49 @@ void Game::setSecretCombination(SecretCombination *secretCombination){
 }
 
 GameMemento* Game::createGameMemento(){
+    std::string string  = toString();
+    Game * game = toGame(string);
+    std::cout << "---" << std::endl;
+    game->getSecretCombination()->toString("PRUEBA");
     return new GameMemento(this, secretCombination, proposedCombinations, state, turn);
 }
 
 void Game::restore(GameMemento *gameMemento){
     gameMemento->restore();
+}
+
+string Game::toString(){
+    string output;
+    for(int i = 0; i < turn; i++){
+        output += proposedCombinations[i].toString("PC");
+    } 
+    output += "\n";
+    output += secretCombination->toString("SC");
+
+    return output;
+}
+
+Game* Game::toGame(std::string gameString){
+    std::istringstream f(gameString);
+    std::string line;
+    setState(IN_GAME);
+    int counter = 0;
+    while (std::getline(f, line)) {
+        std::cout << "first" << std::endl;
+        if(line.substr (0,1) == "SC"){
+/*             std::string combination = line.substr(4,7);
+            char *cstr = &combination[0u];
+            SecretCombination *secretCombination = new SecretCombination(); */
+/*             secretCombination->setCombination(cstr);
+            setSecretCombination(secretCombination); */
+        }
+        if(line.substr (0,1) == "PC"){
+            counter++;
+/*             std::string combination = line.substr(4,7);
+            char *cstr = &combination[0u]; */
+            //ProposedCombination *proposedCombination = new ProposedCombination();
+            //proposedCombination->setCombination(cstr);
+            //proposedCombinations[counter] = *proposedCombination;
+        }
+    }
 }

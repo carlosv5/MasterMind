@@ -5,6 +5,7 @@
 #include "commands/commandStart.hpp"
 #include "commands/commandContinue.hpp"
 #include "commands/commandEnd.hpp"
+#include "commands/commandLoad.hpp"
 #include "../../controllers/controllerVisitor.hpp"
 
 

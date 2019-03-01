@@ -8,8 +8,8 @@ clean:
 clean_objects: 
 	rm *.o
 
-game_mastermind: masterMind.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o game.o localColocateController.o localContinueController.o consoleView.o secretCombinationView.o proposedCombinationView.o localNoGameMenuController.o noGameMenuView.o command.o commandStart.o commandContinue.o commandEnd.o localGameMenuController.o commandColocate.o gameMenuView.o commandSurrender.o gameMemento.o mementoRegistry.o commandUndo.o commandRedo.o
-	g++ masterMind.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o game.o localColocateController.o localContinueController.o consoleView.o  secretCombinationView.o proposedCombinationView.o localNoGameMenuController.o noGameMenuView.o command.o commandStart.o commandContinue.o commandEnd.o localGameMenuController.o commandColocate.o gameMenuView.o commandSurrender.o gameMemento.o mementoRegistry.o commandUndo.o commandRedo.o -o masterMind $(FLAGS) 
+game_mastermind: masterMind.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o game.o localColocateController.o localContinueController.o consoleView.o secretCombinationView.o proposedCombinationView.o localNoGameMenuController.o noGameMenuView.o command.o commandStart.o commandContinue.o commandEnd.o localGameMenuController.o commandColocate.o gameMenuView.o commandSurrender.o gameMemento.o mementoRegistry.o commandUndo.o commandRedo.o commandSave.o commandLoad.o
+	g++ masterMind.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o game.o localColocateController.o localContinueController.o consoleView.o  secretCombinationView.o proposedCombinationView.o localNoGameMenuController.o noGameMenuView.o command.o commandStart.o commandContinue.o commandEnd.o localGameMenuController.o commandColocate.o gameMenuView.o commandSurrender.o gameMemento.o mementoRegistry.o commandUndo.o commandRedo.o commandSave.o commandLoad.o -o masterMind $(FLAGS) 
 	make clean_objects
 
 masterMind.o: masterMind.cpp masterMind.hpp controllers/local/localLogic.hpp views/console/consoleView.hpp
@@ -89,3 +89,9 @@ commandUndo.o: views/console/commands/commandUndo.hpp views/console/commands/com
 
 commandRedo.o: views/console/commands/commandRedo.hpp views/console/commands/commandRedo.cpp views/console/commands/command.hpp
 	g++ -c views/console/commands/commandRedo.cpp
+
+commandSave.o: views/console/commands/commandSave.hpp views/console/commands/commandSave.cpp views/console/commands/command.hpp
+	g++ -c views/console/commands/commandSave.cpp
+
+commandLoad.o: views/console/commands/commandLoad.hpp views/console/commands/commandLoad.cpp views/console/commands/command.hpp
+	g++ -c views/console/commands/commandLoad.cpp

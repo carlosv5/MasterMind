@@ -8,6 +8,7 @@
 #include "commands/commandSurrender.hpp"
 #include "commands/commandUndo.hpp"
 #include "commands/commandRedo.hpp"
+#include "commands/commandSave.hpp"
 
 class GameMenuView 
 {

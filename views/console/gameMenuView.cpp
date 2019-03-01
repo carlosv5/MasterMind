@@ -6,6 +6,7 @@ using namespace std;
 
 GameMenuView::GameMenuView(){
 	commandsVector.push_back(new CommandColocate());
+	commandsVector.push_back(new CommandSave());
 	commandsVector.push_back(new CommandUndo());
 	commandsVector.push_back(new CommandRedo());
 	commandsVector.push_back(new CommandSurrender());

@@ -9,6 +9,7 @@ NoGameMenuView::NoGameMenuView()
 {
 	commandsVector.push_back(new CommandStart());
 	commandsVector.push_back(new CommandContinue());
+	commandsVector.push_back(new CommandLoad());
 	commandsVector.push_back(new CommandEnd());
 };
 
