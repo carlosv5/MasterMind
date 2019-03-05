@@ -10,7 +10,7 @@ class StoreType
   public:
     StoreType(Game* game){this->game = game;};
     virtual void save(std::string title) = 0;
-    virtual void load() = 0;
+    virtual void load(std::string title) = 0;
 
   protected:
     Game* game;

@@ -37,3 +37,7 @@ MementoRegistry * LocalNoGameMenuController::getMementoRegistry(){
      return mementoRegistry;
 }
 
+void LocalNoGameMenuController::load(std::string title){
+    storeController->load(title);
+}
+

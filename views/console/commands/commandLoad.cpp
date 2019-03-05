@@ -9,9 +9,9 @@ bool CommandLoad::isActive(State state){
 }
 
 void CommandLoad::execute(NoGameMenuController * controller){
-/*     std::cout << "Tell me a name for this game" << std::endl;
+    std::cout << "-> What title do you want for this game?" << std::endl;
     std::string gameName;
-    getline(std::cin, gameName); */
-/*     controller->getMementoRegistry()->execute();
-    controller->surrender(); */
+    getline(std::cin, gameName);
+    controller->getMementoRegistry()->flush();
+    controller->load(gameName);
 }

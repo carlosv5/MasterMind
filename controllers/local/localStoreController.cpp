@@ -13,8 +13,9 @@ void LocalStoreController::save(std::string title)
     storeType->save(title);
 }
 
-void LocalStoreController::load()
+void LocalStoreController::load(std::string title)
 {
-    assert(game->getState() == IN_GAME);
+    assert(game->getState() != IN_GAME);
+    storeType->load(title);
     std::cout << "loading" << std::endl;
 }

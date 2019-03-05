@@ -18,7 +18,24 @@ void TextStore::save(std::string title)
     }
 }
 
-void TextStore::load()
+void TextStore::load(std::string title)
 {
+  std::string line;
+  std::string path = "saveGames/" + title + ".txt";
+  std::ifstream myfile (path.c_str());
+  if (myfile.is_open())
+  {
+    while ( getline (myfile,line) )
+    {
+        std::cout << "Reading line: " << line << std::endl;
+      //cout << line << '\n';
+    }
+    myfile.close();
+  }    
+  else
+    {
+        std::cout << "Unable to open file" << std::endl;
+    }
+
     std::cout << "loaded" << std::endl;
 }

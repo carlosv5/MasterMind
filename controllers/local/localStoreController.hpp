@@ -13,7 +13,7 @@ class LocalStoreController : public StoreController, public Controller
       this->storeType = new TextStore(game);
     }
     void save(std::string title);
-    void load();
+    void load(std::string title);
 };
 
 #endif

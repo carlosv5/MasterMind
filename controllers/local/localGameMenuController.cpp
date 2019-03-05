@@ -48,9 +48,5 @@ void LocalGameMenuController::save(std::string title){
     storeController->save(title);
 }
 
-void LocalGameMenuController::load(){
-    //storeController->save();
-}
-
  
 

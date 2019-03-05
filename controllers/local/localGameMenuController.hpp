@@ -29,7 +29,6 @@ class LocalGameMenuController : public GameMenuController, public Controller
     void redo();
     void undo();
     void save(std::string title);
-    void load();
 
   private:
     LocalColocateController * colocateController;
