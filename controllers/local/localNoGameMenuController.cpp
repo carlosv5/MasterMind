@@ -41,3 +41,7 @@ void LocalNoGameMenuController::load(std::string title){
     storeController->load(title);
 }
 
+ColocateController * LocalNoGameMenuController::getColocateController(){
+    return colocateController;
+}
+

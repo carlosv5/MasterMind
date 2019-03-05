@@ -32,7 +32,7 @@ class Game
     GameMemento* createGameMemento();
     void restore(GameMemento *gameMemento);
     std::string toString();
-    Game* toGame(std::string);
+    void toGame(std::string * );
 
   private:
     SecretCombination *secretCombination;

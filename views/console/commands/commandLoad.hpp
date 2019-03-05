@@ -3,6 +3,7 @@
 #include "command.hpp"
 #include <stdlib.h>
 #include <iostream>
+#include "../proposedCombinationView.hpp"
 
 class CommandLoad: public Command
 {

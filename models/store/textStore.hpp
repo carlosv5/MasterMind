@@ -10,7 +10,7 @@ class TextStore : public StoreType
   public:
     TextStore(Game* game) : StoreType(game){};
     void save(std::string title);
-    void load(std::string title);    
+    std::string * load(std::string title);    
 };
 
 #endif

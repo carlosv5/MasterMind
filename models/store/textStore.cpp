@@ -1,6 +1,7 @@
 #include "textStore.hpp"
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 void TextStore::save(std::string title)
 {
@@ -18,24 +19,22 @@ void TextStore::save(std::string title)
     }
 }
 
-void TextStore::load(std::string title)
+std::string * TextStore::load(std::string title)
 {
-  std::string line;
-  std::string path = "saveGames/" + title + ".txt";
-  std::ifstream myfile (path.c_str());
-  if (myfile.is_open())
-  {
-    while ( getline (myfile,line) )
+    std::string line;
+    std::string path = "saveGames/" + title + ".txt";
+    std::ifstream myfile(path.c_str());
+    std::string * gameString = new std::string;
+    if (myfile.is_open())
     {
-        std::cout << "Reading line: " << line << std::endl;
-      //cout << line << '\n';
+        std::stringstream strStream;
+        strStream << myfile.rdbuf();
+        *gameString = strStream.str();
+        myfile.close();
     }
-    myfile.close();
-  }    
-  else
+    else
     {
         std::cout << "Unable to open file" << std::endl;
     }
-
-    std::cout << "loaded" << std::endl;
+    return gameString;
 }

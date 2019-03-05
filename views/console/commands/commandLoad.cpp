@@ -9,9 +9,12 @@ bool CommandLoad::isActive(State state){
 }
 
 void CommandLoad::execute(NoGameMenuController * controller){
-    std::cout << "-> What title do you want for this game?" << std::endl;
+    std::cout << "-> Which game do you want to load?" << std::endl;
     std::string gameName;
     getline(std::cin, gameName);
     controller->getMementoRegistry()->flush();
     controller->load(gameName);
+    ColocateController * colocateController = controller->getColocateController();
+	ProposedCombinationView * proposedCombinationView = new ProposedCombinationView;
+    proposedCombinationView->printPreviewCombinations(colocateController->getProposedCombinationsArray(), colocateController->getTurn());
 }

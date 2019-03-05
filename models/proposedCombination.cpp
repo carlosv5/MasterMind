@@ -17,14 +17,19 @@ void ProposedCombination::createCombination()
 
 void ProposedCombination::calculateResult(SecretCombination secretCombination)
 {
-    int black = results[INDEX_BLACK_RESULT];
-    int white = results[INDEX_WHITE_RESULT];
+    int black = 0;
+    int white = 0;
     std::set<char> setColors;
     char *copyOfCombination = new char[SIZE_COMBINATION];
     for (int i = 0; i < SIZE_COMBINATION; i++)
     {
         copyOfCombination[i] = combination[i];
     }
+    std::cout << secretCombination.getCombination()[0] << std::endl;
+        std::cout << secretCombination.getCombination()[1] << std::endl;
+    std::cout << secretCombination.getCombination()[2] << std::endl;
+    std::cout << secretCombination.getCombination()[3] << std::endl;
+
     for (int i = 0; i < SIZE_COMBINATION; i++)
     {
         if (secretCombination.getCombination()[i] == copyOfCombination[i])
@@ -47,6 +52,8 @@ void ProposedCombination::calculateResult(SecretCombination secretCombination)
     delete copyOfCombination;
     results[INDEX_BLACK_RESULT] = black;
     results[INDEX_WHITE_RESULT] = white;
+
+
 }
 bool ProposedCombination::isWinner()
 {

@@ -12,12 +12,13 @@ Game::Game()
     turn = 0;
 };
 
-SecretCombination * Game::getSecretCombination()
+SecretCombination *Game::getSecretCombination()
 {
     return secretCombination;
 }
 
-void Game::createSecretCombination(){
+void Game::createSecretCombination()
+{
     secretCombination = new SecretCombination();
 }
 
@@ -67,74 +68,104 @@ void Game::clear()
     this->setTurn(0);
 }
 
-int Game::getCombinationSize(){
+int Game::getCombinationSize()
+{
     secretCombination->getSize();
 }
 
-ProposedCombination Game::getProposedCombination(int turn){
+ProposedCombination Game::getProposedCombination(int turn)
+{
     return proposedCombinations[turn];
 }
 
-void Game::setProposedCombination(ProposedCombination proposedCombination, int turn){
+void Game::setProposedCombination(ProposedCombination proposedCombination, int turn)
+{
     proposedCombinations[turn] = proposedCombination;
 }
 
-ProposedCombination * Game::getProposedCombinationsArray(){
+ProposedCombination *Game::getProposedCombinationsArray()
+{
     return proposedCombinations;
 }
 
-int Game::getMaxNumberOfCombinations(){
+int Game::getMaxNumberOfCombinations()
+{
     return MAX_PROPOSED_COMBINATION;
 }
 
-void Game::setProposedCombinations(ProposedCombination *proposedCombinations){
+void Game::setProposedCombinations(ProposedCombination *proposedCombinations)
+{
     this->proposedCombinations = proposedCombinations;
 }
 
-void Game::setSecretCombination(SecretCombination *secretCombination){
+void Game::setSecretCombination(SecretCombination *secretCombination)
+{
     this->secretCombination = secretCombination;
 }
 
-GameMemento* Game::createGameMemento(){
+GameMemento *Game::createGameMemento()
+{
     return new GameMemento(this, secretCombination, proposedCombinations, state, turn);
 }
 
-void Game::restore(GameMemento *gameMemento){
+void Game::restore(GameMemento *gameMemento)
+{
     gameMemento->restore();
 }
 
-string Game::toString(){
+string Game::toString()
+{
     string output;
-    for(int i = 0; i < turn; i++){
-        output += proposedCombinations[i].toString("PC");
-    } 
-    output += "\n";
     output += secretCombination->toString("SC");
-
+    output += "\n";
+    for (int i = 0; i < turn; i++)
+    {
+        output += proposedCombinations[i].toString("PC");
+        output += "\n";
+    }
     return output;
 }
 
-Game* Game::toGame(std::string gameString){
-    std::istringstream f(gameString);
+void Game::toGame(std::string *gameString)
+{
+    std::cout << *gameString << std::endl;
+    std::istringstream f(*gameString);
     std::string line;
-    setState(IN_GAME);
     int counter = 0;
-    while (std::getline(f, line)) {
-        std::cout << "first" << std::endl;
-        if(line.substr (0,1) == "SC"){
-/*             std::string combination = line.substr(4,7);
+    std::cout << secretCombination->toString("SC ANTES") << std::endl;
+    while (std::getline(f, line))
+    {
+        if (line.substr(0, 2) == "SC")
+        {
+            std::string combination = line.substr(4, 7);
+            std::cout << "combination secret " << combination << std::endl;
             char *cstr = &combination[0u];
-            SecretCombination *secretCombination = new SecretCombination(); */
-/*             secretCombination->setCombination(cstr);
-            setSecretCombination(secretCombination); */
+            this->secretCombination->setCombination(cstr);
+            std::cout << secretCombination->toString("SC BIEN") << std::endl;
+
         }
-        if(line.substr (0,1) == "PC"){
+         std::cout << secretCombination->toString("SC DESPUES BIEN") << std::endl;
+        if (line.substr(0, 2) == "PC")
+        {
+            std::string combination = line.substr(4, 7);
+            std::cout << secretCombination->toString("SC SEGUNDOIF") << std::endl;
+            std::cout << "combination propose " << combination << std::endl;
+            char *cstr = &combination[0u];
+            ProposedCombination *proposedCombination = new ProposedCombination();
+            proposedCombination->createCombination();
+            proposedCombination->setCombination(cstr);
+            proposedCombination->calculateResult(*secretCombination);
+            setProposedCombination(*proposedCombination, counter);
+            proposedCombinations[counter] = *proposedCombination;
+
+            /*             proposedCombinations[counter].setCombination(cstr);
+            proposedCombinations[counter].setInitialResults();
+            std::cout << "es" << proposedCombinations[counter].getResults()[0] << std::endl;
+            proposedCombinations[counter].calculateResult(*secretCombination); */
             counter++;
-/*             std::string combination = line.substr(4,7);
-            char *cstr = &combination[0u]; */
-            //ProposedCombination *proposedCombination = new ProposedCombination();
-            //proposedCombination->setCombination(cstr);
-            //proposedCombinations[counter] = *proposedCombination;
         }
     }
+    setTurn(counter);
+    setState(IN_GAME);
+    delete gameString;
 }
