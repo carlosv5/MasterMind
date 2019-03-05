@@ -6,6 +6,7 @@
 #include "../gameMenuController.hpp"
 #include "localColocateController.hpp"
 #include "localContinueController.hpp"
+#include "localStoreController.hpp"
 
 class LocalGameMenuController : public GameMenuController, public Controller
 {
@@ -14,6 +15,7 @@ class LocalGameMenuController : public GameMenuController, public Controller
     {
       colocateController = new LocalColocateController(game);
       continueController = new LocalContinueController(game);
+      storeController = new LocalStoreController(game);
       this->mementoRegistry =  mementoRegistry;
     };
     void accept(ControllerVisitor * controllerVisitor);
@@ -26,10 +28,13 @@ class LocalGameMenuController : public GameMenuController, public Controller
     void executeMementoRegistry();
     void redo();
     void undo();
+    void save(std::string title);
+    void load();
 
   private:
     LocalColocateController * colocateController;
     LocalContinueController * continueController;
+    LocalStoreController * storeController;
     MementoRegistry * mementoRegistry;
 
 };

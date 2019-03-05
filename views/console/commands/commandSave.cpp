@@ -9,9 +9,10 @@ bool CommandSave::isActive(State state){
 }
 
 void CommandSave::execute(GameMenuController * controller){
-    std::cout << "Tell me a name for this game" << std::endl;
+    std::cout << "-> What title do you want for this game?" << std::endl;
     std::string gameName;
     getline(std::cin, gameName);
-/*     controller->getMementoRegistry()->execute();
-    controller->surrender(); */
+    controller->getMementoRegistry()->flush();
+    controller->save(gameName);
+    controller->surrender();
 }

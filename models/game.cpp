@@ -96,10 +96,6 @@ void Game::setSecretCombination(SecretCombination *secretCombination){
 }
 
 GameMemento* Game::createGameMemento(){
-    std::string string  = toString();
-    Game * game = toGame(string);
-    std::cout << "---" << std::endl;
-    game->getSecretCombination()->toString("PRUEBA");
     return new GameMemento(this, secretCombination, proposedCombinations, state, turn);
 }
 

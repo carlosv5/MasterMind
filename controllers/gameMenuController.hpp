@@ -17,6 +17,8 @@ class GameMenuController
     virtual void executeMementoRegistry() = 0;
     virtual void redo() = 0;
     virtual void undo() = 0;
+    virtual void save(std::string title) = 0;
+    virtual void load() = 0;
 
 };
 
