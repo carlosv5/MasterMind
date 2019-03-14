@@ -65,6 +65,9 @@ void Game::setTurn(int turn)
 void Game::clear()
 {
     delete secretCombination;
+    for(int i = 0; i< turn; i++){
+        proposedCombinations[i].clear();
+    }
     this->setTurn(0);
 }
 
@@ -128,28 +131,23 @@ string Game::toString()
 
 void Game::toGame(std::string *gameString)
 {
-    std::cout << *gameString << std::endl;
     std::istringstream f(*gameString);
     std::string line;
     int counter = 0;
-    std::cout << secretCombination->toString("SC ANTES") << std::endl;
     while (std::getline(f, line))
     {
         if (line.substr(0, 2) == "SC")
         {
             std::string combination = line.substr(4, 7);
-            std::cout << "combination secret " << combination << std::endl;
             char *cstr = &combination[0u];
+            this->createSecretCombination();
             this->secretCombination->setCombination(cstr);
-            std::cout << secretCombination->toString("SC BIEN") << std::endl;
+
 
         }
-         std::cout << secretCombination->toString("SC DESPUES BIEN") << std::endl;
         if (line.substr(0, 2) == "PC")
         {
             std::string combination = line.substr(4, 7);
-            std::cout << secretCombination->toString("SC SEGUNDOIF") << std::endl;
-            std::cout << "combination propose " << combination << std::endl;
             char *cstr = &combination[0u];
             ProposedCombination *proposedCombination = new ProposedCombination();
             proposedCombination->createCombination();
@@ -157,11 +155,6 @@ void Game::toGame(std::string *gameString)
             proposedCombination->calculateResult(*secretCombination);
             setProposedCombination(*proposedCombination, counter);
             proposedCombinations[counter] = *proposedCombination;
-
-            /*             proposedCombinations[counter].setCombination(cstr);
-            proposedCombinations[counter].setInitialResults();
-            std::cout << "es" << proposedCombinations[counter].getResults()[0] << std::endl;
-            proposedCombinations[counter].calculateResult(*secretCombination); */
             counter++;
         }
     }

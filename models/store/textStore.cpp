@@ -5,7 +5,6 @@
 
 void TextStore::save(std::string title)
 {
-    std::cout << "saved " << title << std::endl;
     std::string path = "saveGames/" + title + ".txt";
     std::ofstream myfile(path.c_str());
     if (myfile.is_open())

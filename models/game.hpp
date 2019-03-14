@@ -39,7 +39,7 @@ class Game
     ProposedCombination *proposedCombinations;
     State state;
     int turn;
-    static const int MAX_PROPOSED_COMBINATION = 2;
+    static const int MAX_PROPOSED_COMBINATION = 5;
 
 };
 

@@ -42,6 +42,7 @@ void LocalGameMenuController::redo(){
 }
 
 void LocalGameMenuController::undo(){
+    mementoRegistry->undo(game);
 }
 
 void LocalGameMenuController::save(std::string title){

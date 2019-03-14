@@ -25,10 +25,6 @@ void ProposedCombination::calculateResult(SecretCombination secretCombination)
     {
         copyOfCombination[i] = combination[i];
     }
-    std::cout << secretCombination.getCombination()[0] << std::endl;
-        std::cout << secretCombination.getCombination()[1] << std::endl;
-    std::cout << secretCombination.getCombination()[2] << std::endl;
-    std::cout << secretCombination.getCombination()[3] << std::endl;
 
     for (int i = 0; i < SIZE_COMBINATION; i++)
     {
