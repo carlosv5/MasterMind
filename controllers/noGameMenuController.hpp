@@ -4,6 +4,7 @@
 #include "../models/game.hpp"
 #include "colocateController.hpp"
 #include "../models/mementoRegistry.hpp"
+#include <vector>
 
 class NoGameMenuController
 {
@@ -17,6 +18,7 @@ class NoGameMenuController
     virtual MementoRegistry * getMementoRegistry() = 0;
     virtual void load(std::string title) = 0;
     virtual ColocateController * getColocateController() = 0;
+    virtual void showFiles(std::vector<std::string>& v) = 0;
 
 };
 

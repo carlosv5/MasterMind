@@ -45,3 +45,7 @@ ColocateController * LocalNoGameMenuController::getColocateController(){
     return colocateController;
 }
 
+void LocalNoGameMenuController::showFiles(std::vector<std::string>& v) {
+    return storeController->showFiles(v);
+}
+

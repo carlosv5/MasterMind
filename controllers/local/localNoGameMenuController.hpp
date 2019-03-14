@@ -30,6 +30,7 @@ class LocalNoGameMenuController : public NoGameMenuController, public Controller
     MementoRegistry * getMementoRegistry();
     void load(std::string);
     ColocateController * getColocateController();
+    void showFiles(std::vector<std::string>& v);
 
   private:
     LocalStartController * startController;

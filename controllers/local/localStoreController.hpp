@@ -14,6 +14,7 @@ class LocalStoreController : public StoreController, public Controller
     }
     void save(std::string title);
     void load(std::string title);
+    void showFiles(std::vector<std::string>& v);
 };
 
 #endif

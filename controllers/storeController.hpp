@@ -10,6 +10,7 @@ class StoreController
   public:
     virtual void save(std::string title) = 0;
     virtual void load(std::string title) = 0;
+    virtual void showFiles(std::vector<std::string>& v) = 0;
 
     protected:
     StoreType * storeType;
