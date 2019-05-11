@@ -8,8 +8,8 @@ clean:
 clean_objects: 
 	rm *.o
 
-game_mastermind: masterMind.o masterMindStandAlone.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o game.o localColocateController.o localContinueController.o consoleView.o secretCombinationView.o proposedCombinationView.o localNoGameMenuController.o noGameMenuView.o command.o commandStart.o commandContinue.o commandEnd.o localGameMenuController.o commandColocate.o gameMenuView.o commandSurrender.o gameMemento.o mementoRegistry.o commandUndo.o commandRedo.o commandSave.o commandLoad.o textStore.o localStoreController.o
-	g++ masterMind.o masterMindStandAlone.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o game.o localColocateController.o localContinueController.o consoleView.o  secretCombinationView.o proposedCombinationView.o localNoGameMenuController.o noGameMenuView.o command.o commandStart.o commandContinue.o commandEnd.o localGameMenuController.o commandColocate.o gameMenuView.o commandSurrender.o gameMemento.o mementoRegistry.o commandUndo.o commandRedo.o commandSave.o commandLoad.o textStore.o localStoreController.o -o masterMind $(FLAGS) 
+game_mastermind: masterMind.o masterMindStandAlone.o masterMindClient.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o distributedLogic.o game.o localColocateController.o localContinueController.o consoleView.o secretCombinationView.o proposedCombinationView.o localNoGameMenuController.o noGameMenuView.o command.o commandStart.o commandContinue.o commandEnd.o localGameMenuController.o commandColocate.o gameMenuView.o commandSurrender.o gameMemento.o mementoRegistry.o commandUndo.o commandRedo.o commandSave.o commandLoad.o textStore.o localStoreController.o
+	g++ masterMind.o masterMindStandAlone.o masterMindClient.o secretCombination.o proposedCombination.o color.o localStartController.o localLogic.o distributedLogic.o game.o localColocateController.o localContinueController.o consoleView.o  secretCombinationView.o proposedCombinationView.o localNoGameMenuController.o noGameMenuView.o command.o commandStart.o commandContinue.o commandEnd.o localGameMenuController.o commandColocate.o gameMenuView.o commandSurrender.o gameMemento.o mementoRegistry.o commandUndo.o commandRedo.o commandSave.o commandLoad.o textStore.o localStoreController.o -o masterMind $(FLAGS) 
 	make clean_objects
 
 masterMind.o: masterMind.cpp masterMind.hpp controllers/local/localLogic.hpp views/console/consoleView.hpp
@@ -17,6 +17,9 @@ masterMind.o: masterMind.cpp masterMind.hpp controllers/local/localLogic.hpp vie
 
 masterMindStandAlone.o: masterMindStandAlone.cpp masterMindStandAlone.hpp masterMind.hpp controllers/local/localLogic.hpp views/console/consoleView.hpp
 	g++ -c masterMindStandAlone.cpp
+
+masterMindClient.o: controllers/distributed/masterMindClient.cpp controllers/distributed/masterMindClient.hpp masterMind.hpp controllers/distributed/distributedLogic.hpp views/console/consoleView.hpp
+	g++ -c controllers/distributed/masterMindClient.cpp
 
 game.o: models/game.cpp models/game.hpp models/secretCombination.hpp models/proposedCombination.hpp models/state.hpp
 	g++ -c models/game.cpp
@@ -41,6 +44,9 @@ localContinueController.o: controllers/local/localContinueController.cpp control
 
 localLogic.o: controllers/local/localLogic.cpp controllers/local/localLogic.hpp controllers/local/localStartController.hpp controllers/controller.hpp logic.hpp
 	g++ -c controllers/local/localLogic.cpp
+
+distributedLogic.o: controllers/distributed/distributedLogic.cpp controllers/distributed/distributedLogic.hpp controllers/controller.hpp logic.hpp
+	g++ -c controllers/distributed/distributedLogic.cpp
 
 localStoreController.o: controllers/local/localStoreController.cpp controllers/local/localStoreController.hpp models/game.hpp controllers/controller.hpp
 	g++ -c controllers/local/localStoreController.cpp 

@@ -1,0 +1,20 @@
+#ifndef FRAME_TYPE
+#define FRAME_TYPE
+
+enum FrameType { 	
+    START, 
+	STATE,
+	UNDO, 
+	REDO, 
+	UNDOABLE, 
+	REDOABLE, 
+	WINNER, 
+	LOOSER, 
+	TURN, 
+	ALLCODES, 
+	PROPOSECOMBINATION, 
+	WIDTH,
+	RESUME,
+	CLOSE};
+
+#endif
